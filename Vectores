@@ -1,0 +1,52 @@
+internal class Program
+{
+    int[] numeros = new int[100];
+    int[] primos = new int [100]
+    private static void Main(string[] args)
+    {
+        Program ejemplo = new Program();
+        ejemplo.llenaValores();
+        ejemplo.imprimeVector(ejemplo.numeros, "Vector Original");
+        ejemplo.encuentraPrimos();
+        Array.Sort(ejemplo.primos);
+        ejemplo.imprimeVector(ejemplo.primos, "Vector Original");        
+    }
+
+    private void llenaValores()
+    {
+        Random random = new Random();
+        for (int i=0; i<100; i++)
+        {
+            numeros[i] = random.Next (100, 999);
+        }    
+    }
+    private void encuentraPrimos()
+    {
+        int numPrimos = 0;
+        for (int i=0; i<100; i++)
+        {
+            if (esPrimo(numeros[i]))
+            {
+                primos[numPrimos] = numeros[i];
+                numPrimos++;
+            }    
+        }    
+    }
+
+    private bool esPrimo(int numero)
+    { 
+        int contador = 0;
+        for (int i = 2; i<numero / 2; i++)
+             if ((numero % i) == 0) contador++;
+        if (contador > 0) return false;
+         else return true;     
+    }    
+    private void imprimeVector (int[] numeros, string msg)
+    {
+        Console.WriteLine(msg);
+        for (i = 0; i < numeros.Lenght; i++)
+            if (numeros[i]!=0) Console.Write(numeros[i] + ", ");
+        Console.WriteLine("___________________________________");    
+    }
+  }
+}    
